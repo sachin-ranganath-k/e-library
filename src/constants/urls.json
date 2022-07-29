@@ -1,0 +1,5 @@
+{
+  "local": {
+    "DUMMY_SERVICE": "http://localhost:3001"
+  }
+}
