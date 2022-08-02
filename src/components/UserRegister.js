@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import { SPACING } from "../constants/styleGuide";
 import { REGISTER, TOASTER } from "../constants/constants";
-
+import axios from "axios";
 
 const UserRegister = () => {
   const [inputs, setInputs] = useState({
@@ -24,6 +24,8 @@ const UserRegister = () => {
     confirmPassword: "",
   });
   const [gender, setGender] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const { firstName, lastName, email, setPassword, confirmPassword } = inputs;
 
@@ -39,17 +41,32 @@ const UserRegister = () => {
     setGender(e.target.value);
   };
 
+  const apiCall = () => {
+    axios
+      .post("http://localhost:3001/users", inputs)
+      .then(() => {
+        setSuccessMessage(true);
+        setErrorMessage(false);
+      })
+      .catch(() => {
+        setSuccessMessage(false);
+        setErrorMessage(true);
+      });
+  };
+
   const formSubmit = () => {
     if (setPassword !== confirmPassword) {
-      alert("error", TOASTER.INVALID_PASSWORD)
+      alert("error", TOASTER.INVALID_PASSWORD);
     } else {
-      alert("success", "Valid Password")
+      apiCall();
     }
   };
 
   return (
     <div className="container" style={{ marginTop: "10%" }}>
       <Container maxWidth="md">
+        {successMessage && "Submitted"}
+        {errorMessage && "Error..!"}
         <div className="heading">
           <h1>{REGISTER.USER_REG}</h1>
         </div>

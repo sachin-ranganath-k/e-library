@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "firstName": "Sachin",
+      "lastName": "K",
+      "email": "sachin@gmail.com",
+      "setPassword": "sachin",
+      "confirmPassword": "sachin",
+      "id": 1
+    }
+  ]
+}
