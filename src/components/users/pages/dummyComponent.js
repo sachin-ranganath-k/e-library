@@ -5,13 +5,13 @@ import { makeStyles } from "@mui/styles";
 import {
   DUMMY_PROJECT,
   PROJECT_DESC
-} from "../constants/constants";
+} from "../../../constants/constants";
 
 // Style Guide
-import { SPACING } from "../constants/styleGuide";
+import { SPACING } from "../../../constants/styleGuide";
 
 // Colors
-import { RED } from "../constants/colors";
+import { RED } from "../../../constants/colors";
 
 // MUI Icons
 import Home from "@mui/icons-material/Home";

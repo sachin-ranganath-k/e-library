@@ -1,5 +1,5 @@
-const actionTypes = {
-  DUMMY: "DUMMY"
-};
+// const actionTypes = {
+//   DUMMY: "DUMMY"
+// };
 
-export default actionTypes;
+// export default actionTypes;

@@ -11,9 +11,11 @@ import {
   FormLabel,
   FormControlLabel,
 } from "@mui/material";
-import { SPACING } from "../constants/styleGuide";
-import { REGISTER, TOASTER } from "../constants/constants";
+import { SPACING } from "../../../constants/styleGuide";
+import { REGISTER, TOASTER } from "../../../constants/constants";
 import axios from "axios";
+import {Link} from "react-router-dom";
+import '../scss/UserRegister.scss'
 
 const UserRegister = () => {
   const [inputs, setInputs] = useState({
@@ -63,7 +65,9 @@ const UserRegister = () => {
   };
 
   return (
-    <div className="container" style={{ marginTop: "10%" }}>
+  <div className="mainBody">
+    <br /><br />
+    <div className="container">
       <Container maxWidth="md">
         {successMessage && "Submitted"}
         {errorMessage && "Error..!"}
@@ -157,10 +161,17 @@ const UserRegister = () => {
                   {REGISTER.REGISTER}
                 </Button>
               </Grid>
+              <Grid item xs={SPACING.s12}>
+                <Link to="/UserLogin"  className="loginLink">
+                  {REGISTER.ALREADY_ACCOUNT}
+                </Link>
+              </Grid>
             </Grid>
+            <br />
           </Box>
         </div>
       </Container>
+    </div>
     </div>
   );
 };
