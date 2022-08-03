@@ -56,7 +56,7 @@ const UserLogin = () => {
     }
 
     if (found === 1) {
-      navigate("/userDashboard");
+      navigate("/userDashboard", { state: { emails: email } });
     } else {
       setErrorMessage(true);
     }
