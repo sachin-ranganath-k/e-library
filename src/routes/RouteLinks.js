@@ -6,6 +6,8 @@ import toast, { Toaster } from 'react-hot-toast';
 import alert from "../toaster/toaster";
 import UserLogin from "../components/users/pages/UserLogin";
 import UserDashboard from "../components/users/pages/userDashboard";
+import AdminLogin  from "../components/admin/AdminLogin";
+import AdminDashboard from "../components/admin/AdminDashboard";
 
 const RouteLinks = () => {
   return (
@@ -13,8 +15,10 @@ const RouteLinks = () => {
       <Routes>
         <Route path="/" element={<DummyComponent />} />
         <Route path="/UserRegister" element={<UserRegister />} />
-        <Route path="UserLogin" element={<UserLogin />} />
-        <Route path="UserDashboard" element={<UserDashboard />} />
+        <Route path="/UserLogin" element={<UserLogin />} />
+        <Route path="/UserDashboard" element={<UserDashboard />} />
+        <Route path="/AdminLogin" element={<AdminLogin />} />
+        <Route path="/AdminDashboard" element={<AdminDashboard />} />
       </Routes>
       <Toaster position="bottom-right" />
     </Router>

@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Box, Grid, Container, TextField, Button } from "@mui/material";
-import { SPACING } from "../../../constants/styleGuide";
-import { LOGIN, REGISTER, TOASTER } from "../../../constants/constants";
+import { SPACING } from "../../constants/styleGuide";
+import {
+  LOGIN,
+  REGISTER,
+  ADMIN_LOGIN,
+} from "../../constants/constants";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
-import "../scss/UserRegister.scss";
+import { useNavigate } from "react-router-dom";
+import "../users/scss/UserRegister.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers } from "../../../redux/users/userAction";
+import { getAdminData } from "../../redux/admin/adminAction";
 
-const UserLogin = () => {
-  const userData = useSelector((state) => state.userReducer.loadAllUsers);
+const AdminLogin = () => {
+  const userData = useSelector((state) => state.adminReducer.loadAdminData);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -37,11 +41,9 @@ const UserLogin = () => {
 
   const apiCall = () => {
     axios
-      //.get("http://localhost:3001/users")
-      .get("http://localhost/api/user")
+      .get("http://localhost:3001/admin")
       .then((response) => {
-        dispatch(getUsers(response.data));
-        console.log(response);
+        dispatch(getAdminData(response.data));
       })
       .catch(() => {
         setErrorMessage(true);
@@ -51,14 +53,17 @@ const UserLogin = () => {
   const login = () => {
     let found;
     for (let i = 0; i < userData.length; i++) {
-      if (userData[i].email === email && userData[i].setPassword === password) {
+      if (
+        userData[i].adminEmail === email &&
+        userData[i].adminPassword === password
+      ) {
         found = 1;
         break;
       }
     }
 
     if (found === 1) {
-      navigate("/userDashboard", { state: { emails: email } });
+      navigate("/AdminDashboard", { state: { emails: email } });
     } else {
       setErrorMessage(true);
     }
@@ -70,7 +75,7 @@ const UserLogin = () => {
       <Container maxWidth="md">
         {errorMessage && "Invalid Credentials..!"}
         <div className="heading">
-          <h1>{LOGIN.USER_LOGIN}</h1>
+          <h1>{ADMIN_LOGIN.ADMIN_LOGIN}</h1>
         </div>
         <div className="formContainer">
           <Box sx={{ flexGrow: 1 }}>
@@ -109,15 +114,6 @@ const UserLogin = () => {
                   {LOGIN.LOGIN}
                 </Button>
               </Grid>
-              <Grid item xs={SPACING.s12}>
-                <Link
-                  to="/UserRegister"
-                  underline="hover"
-                  className="loginLink"
-                >
-                  {LOGIN.DONT_HAVE_ACCOUNT}
-                </Link>
-              </Grid>
             </Grid>
             <br />
           </Box>
@@ -127,4 +123,4 @@ const UserLogin = () => {
   );
 };
 
-export default UserLogin;
+export default AdminLogin;

@@ -22,6 +22,10 @@ export const LOGIN = {
   DONT_HAVE_ACCOUNT:"Don't have account? Register here"
 };
 
+export const ADMIN_LOGIN={
+  ADMIN_LOGIN:"Admin Login"
+}
+
 /*************** Toaster Constants *********************/
 export const TOASTER = {
   VALID_PASSWORD: "Valid password",
