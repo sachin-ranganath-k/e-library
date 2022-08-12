@@ -31,3 +31,13 @@ export const TOASTER = {
   VALID_PASSWORD: "Valid password",
   INVALID_PASSWORD: "Passwords combination is incorect..!",
 };
+
+
+/***************Upload Books Constants *****************/
+export const UPLOAD_BOOKS={
+  BOOKS_UPLOAD:"Upload Books",
+  BOOK_NAME:"Book Name",
+  BOOK_AUTHOR:"Book Author",
+  BOOK_LINK:"Paste Book URL Here",
+  UPLOAD:"Upload"
+}

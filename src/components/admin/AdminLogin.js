@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Box, Grid, Container, TextField, Button } from "@mui/material";
 import { SPACING } from "../../constants/styleGuide";
-import {
-  LOGIN,
-  REGISTER,
-  ADMIN_LOGIN,
-} from "../../constants/constants";
+import { LOGIN, REGISTER, ADMIN_LOGIN } from "../../constants/constants";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../users/scss/UserRegister.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { getAdminData } from "../../redux/admin/adminAction";
+import { getAdminData, getAdminDetails } from "../../redux/admin/adminAction";
 
 const AdminLogin = () => {
   const userData = useSelector((state) => state.adminReducer.loadAdminData);
@@ -42,6 +38,7 @@ const AdminLogin = () => {
   const apiCall = () => {
     axios
       .get("http://localhost:3001/admin")
+      // .get("http://localhost/admin-api/admin")
       .then((response) => {
         dispatch(getAdminData(response.data));
       })
@@ -63,6 +60,7 @@ const AdminLogin = () => {
     }
 
     if (found === 1) {
+      dispatch(getAdminDetails(email));
       navigate("/AdminDashboard", { state: { emails: email } });
     } else {
       setErrorMessage(true);

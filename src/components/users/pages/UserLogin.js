@@ -6,7 +6,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "../scss/UserRegister.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers } from "../../../redux/users/userAction";
+import { getUserDetails, getUsers } from "../../../redux/users/userAction";
 
 const UserLogin = () => {
   const userData = useSelector((state) => state.userReducer.loadAllUsers);
@@ -37,8 +37,8 @@ const UserLogin = () => {
 
   const apiCall = () => {
     axios
-      //.get("http://localhost:3001/users")
-      .get("http://localhost/api/user")
+      .get("http://localhost:3001/users")
+      // .get("http://localhost/api/user")
       .then((response) => {
         dispatch(getUsers(response.data));
         console.log(response);
@@ -58,7 +58,9 @@ const UserLogin = () => {
     }
 
     if (found === 1) {
-      navigate("/userDashboard", { state: { emails: email } });
+      dispatch(getUserDetails(email))
+      // navigate("/userDashboard", { state: { emails: email } });
+      navigate("/userDashboard");
     } else {
       setErrorMessage(true);
     }

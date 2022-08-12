@@ -6,3 +6,10 @@ export const getUsers=(payload)=>{
         payload
     }
 }
+
+export const getUserDetails=(payload)=>{
+    return{
+        type:actionTypes.GET_USER_DETAILS,
+        payload
+    }
+}

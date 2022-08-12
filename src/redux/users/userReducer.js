@@ -1,7 +1,11 @@
-import { GET_USERS } from "./userActionConstants";
+import { GET_USERS, GET_USER_DETAILS } from "./userActionConstants";
 
 const initialState={
-    loadAllUsers:[]
+    loadAllUsers:[],
+    userDetails:{
+        // userName:"",
+        userEmail:""
+    }
 }
 const userReducer=(state=initialState, action)=>{
 
@@ -11,6 +15,15 @@ const userReducer=(state=initialState, action)=>{
                 ...state,
                 loadAllUsers:action.payload
             }
+
+        case GET_USER_DETAILS:
+            return{
+                ...state,
+                userDetails:{
+                    userEmail:action.payload
+                }
+            }
+        
 
             default: return state;
     }

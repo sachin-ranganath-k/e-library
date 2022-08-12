@@ -45,8 +45,8 @@ const UserRegister = () => {
 
   const apiCall = () => {
     axios
-      // .post("http://localhost:3001/users", inputs)
-      .post("http://localhost/api/user/save", inputs)
+      .post("http://localhost:3001/users", inputs)
+      // .post("http://localhost/api/user/save", inputs)
       .then((res) => {
         console.log(res);
         setSuccessMessage(true);
