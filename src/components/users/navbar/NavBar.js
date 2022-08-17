@@ -18,21 +18,21 @@ const pages = ["My Account"];
 const settings = ["Profile"];
 
 const NavBar = () => {
-  const userData = useSelector((state) => state.userReducer.userDetails);
+  // const userData = useSelector((state) => state.userReducer.userDetails);
+  let userEmail=localStorage.getItem("userEmail");
+  // React.useEffect(() => {
+  //   window.localStorage.getItem(
+  //     "userEmail",
+  //     JSON.stringify(userData.userEmail)
+  //   );
+  // }, []);
 
-  React.useEffect(() => {
-    window.localStorage.getItem(
-      "userEmail",
-      JSON.stringify(userData.userEmail)
-    );
-  }, []);
-
-  React.useEffect(() => {
-    window.localStorage.setItem(
-      "userEmail",
-      JSON.stringify(userData.userEmail)
-    );
-  }, [userData.userEmail]);
+  // React.useEffect(() => {
+  //   window.localStorage.setItem(
+  //     "userEmail",
+  //     JSON.stringify(userData.userEmail)
+  //   );
+  // }, [userData.userEmail]);
 
   return (
     <AppBar position="static">
@@ -54,7 +54,7 @@ const NavBar = () => {
               textDecoration: "none",
             }}
           >
-            {userData.userEmail}
+            {userEmail}
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>

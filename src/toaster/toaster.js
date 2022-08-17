@@ -1,7 +1,6 @@
 import { toast } from "react-hot-toast";
 
 export default alert = (type, msg) => {
-  debugger;
   switch (type) {
     case "info":
       return toast.info(msg);

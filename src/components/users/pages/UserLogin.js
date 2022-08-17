@@ -1,15 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { Box, Grid, Container, TextField, Button } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Container,
+  TextField,
+  Button,
+  Alert,
+  AlertTitle,
+} from "@mui/material";
 import { SPACING } from "../../../constants/styleGuide";
 import { LOGIN, REGISTER, TOASTER } from "../../../constants/constants";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "../scss/UserRegister.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserDetails, getUsers } from "../../../redux/users/userAction";
+import {
+  getUserDetails,
+  getUsers,
+  showUserError,
+} from "../../../redux/users/userAction";
 
 const UserLogin = () => {
   const userData = useSelector((state) => state.userReducer.loadAllUsers);
+  const error = useSelector((state) => state.userReducer.showError);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -22,8 +35,6 @@ const UserLogin = () => {
     email: "",
     password: "",
   });
-
-  const [errorMessage, setErrorMessage] = useState("");
 
   const { email, password } = inputs;
 
@@ -43,8 +54,8 @@ const UserLogin = () => {
         dispatch(getUsers(response.data));
         console.log(response);
       })
-      .catch(() => {
-        setErrorMessage(true);
+      .catch((error) => {
+        dispatch(showUserError(true));
       });
   };
 
@@ -58,11 +69,12 @@ const UserLogin = () => {
     }
 
     if (found === 1) {
-      dispatch(getUserDetails(email))
+      dispatch(getUserDetails(email));
       // navigate("/userDashboard", { state: { emails: email } });
+      localStorage.setItem("userEmail", email);
       navigate("/userDashboard");
     } else {
-      setErrorMessage(true);
+      dispatch(showUserError(true));
     }
   };
 
@@ -70,7 +82,13 @@ const UserLogin = () => {
     <div className="container" style={{ marginTop: "10%" }}>
       <br />
       <Container maxWidth="md">
-        {errorMessage && "Invalid Credentials..!"}
+        {error && (
+          <Alert severity="error">
+            <AlertTitle><strong>Error..!</strong></AlertTitle>
+           Error Occoured..!
+           Please try later
+          </Alert>
+        )}
         <div className="heading">
           <h1>{LOGIN.USER_LOGIN}</h1>
         </div>

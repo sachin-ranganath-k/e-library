@@ -14,9 +14,9 @@ const RouteLinks = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<DummyComponent />} />
+        {/* <Route path="/" element={<DummyComponent />} /> */}
         <Route path="/UserRegister" element={<UserRegister />} />
-        <Route path="/UserLogin" element={<UserLogin />} />
+        <Route path="/" element={<UserLogin />} />
         <Route path="/UserDashboard" element={<UserDashboard />} />
         <Route path="/AdminLogin" element={<AdminLogin />} />
         <Route path="/AdminDashboard" element={<AdminDashboard />} />

@@ -13,3 +13,10 @@ export const getUserDetails=(payload)=>{
         payload
     }
 }
+
+export const showUserError=(payload)=>{
+    return{
+        type:actionTypes.SHOW_USER_ERROR,
+        payload
+    }
+}
