@@ -26,6 +26,7 @@ const UserLogin = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  let userInfo = "";
 
   useEffect(() => {
     apiCall();
@@ -64,6 +65,7 @@ const UserLogin = () => {
     for (let i = 0; i < userData.length; i++) {
       if (userData[i].email === email && userData[i].setPassword === password) {
         found = 1;
+        userInfo = JSON.stringify(userData[i]);
         break;
       }
     }
@@ -72,6 +74,7 @@ const UserLogin = () => {
       dispatch(getUserDetails(email));
       // navigate("/userDashboard", { state: { emails: email } });
       localStorage.setItem("userEmail", email);
+      localStorage.setItem("userInfo", userInfo);
       navigate("/userDashboard");
     } else {
       dispatch(showUserError(true));
@@ -84,9 +87,10 @@ const UserLogin = () => {
       <Container maxWidth="md">
         {error && (
           <Alert severity="error">
-            <AlertTitle><strong>Error..!</strong></AlertTitle>
-           Error Occoured..!
-           Please try later
+            <AlertTitle>
+              <strong>Error..!</strong>
+            </AlertTitle>
+            Error Occoured..! Please try later
           </Alert>
         )}
         <div className="heading">

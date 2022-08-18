@@ -9,6 +9,8 @@ import UserDashboard from "../components/users/pages/userDashboard";
 import AdminLogin from "../components/admin/AdminLogin";
 import AdminDashboard from "../components/admin/AdminDashboard";
 import UploadBooks from "../components/admin/UploadBooks";
+import UserProfile from "../components/users/pages/UserProfile";
+import Logout from "../components/users/pages/Logout";
 
 const RouteLinks = () => {
   return (
@@ -21,6 +23,8 @@ const RouteLinks = () => {
         <Route path="/AdminLogin" element={<AdminLogin />} />
         <Route path="/AdminDashboard" element={<AdminDashboard />} />
         <Route path="/UploadBooks" element={<UploadBooks />} />
+        <Route path="/MyProfile" element={<UserProfile />} />
+        <Route path="/Logout" element={<Logout />} />
       </Routes>
       <Toaster position="bottom-right" />
     </Router>
