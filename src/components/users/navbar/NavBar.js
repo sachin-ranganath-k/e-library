@@ -9,7 +9,6 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { NavItems } from "./NavItems";
 import { useNavigate } from "react-router-dom";
 
-
 const NavBar = () => {
   const navigate = useNavigate();
   // const userData = useSelector((state) => state.userReducer.userDetails);
@@ -50,7 +49,7 @@ const NavBar = () => {
           >
             {userEmail}
           </Typography>
-
+          <div style={{marginLeft:"65%"}}>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {NavItems.map((page) => (
               <Button
@@ -62,6 +61,7 @@ const NavBar = () => {
               </Button>
             ))}
           </Box>
+          </div>
         </Toolbar>
       </Container>
     </AppBar>
