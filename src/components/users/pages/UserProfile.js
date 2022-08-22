@@ -10,15 +10,11 @@ import {
 } from "@mui/material";
 import { SPACING } from "../../../constants/styleGuide";
 import NavBar from "../navbar/NavBar";
+import Logout from "./Logout";
 
 const UserProfile = () => {
-  const allInfo = JSON.parse(localStorage.getItem("userInfo"));
+  const allInfo = JSON.parse(sessionStorage.getItem("userInfo"));
 
-  // useEffect(() => {
-  //   for(const key in allInfo){
-  //     console.log(`${key}:${allInfo[key]}`)
-  //   }
-  // }, []);
   return (
     <div>
       <NavBar />
@@ -28,8 +24,8 @@ const UserProfile = () => {
         </div>
         <div className="formContainer">
           <Box sx={{ flexGrow: 1 }}>
-          <Grid container spacing={SPACING.s12}>
-          <Grid item xs={SPACING.s12}>
+            <Grid container spacing={SPACING.s12}>
+              <Grid item xs={SPACING.s12}>
                 <FormControl fullWidth sx={{ m: 1 }}>
                   <InputLabel htmlFor="outlined-adornment-amount">
                     User ID
@@ -43,8 +39,8 @@ const UserProfile = () => {
                   />
                 </FormControl>
               </Grid>
-          </Grid>
-          <br />
+            </Grid>
+            <br />
             <Grid container spacing={SPACING.s6}>
               <Grid item xs={SPACING.s6}>
                 <FormControl fullWidth sx={{ m: 1 }}>

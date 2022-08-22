@@ -73,8 +73,8 @@ const UserLogin = () => {
     if (found === 1) {
       dispatch(getUserDetails(email));
       // navigate("/userDashboard", { state: { emails: email } });
-      localStorage.setItem("userEmail", email);
-      localStorage.setItem("userInfo", userInfo);
+      sessionStorage.setItem("userEmail", email);
+      sessionStorage.setItem("userInfo", userInfo);
       navigate("/userDashboard");
     } else {
       dispatch(showUserError(true));

@@ -12,16 +12,16 @@ import { useNavigate } from "react-router-dom";
 const NavBar = () => {
   const navigate = useNavigate();
   // const userData = useSelector((state) => state.userReducer.userDetails);
-  let userEmail = localStorage.getItem("userEmail");
+  let userEmail = sessionStorage.getItem("userEmail");
   // React.useEffect(() => {
-  //   window.localStorage.getItem(
+  //   window.sessionStorage.getItem(
   //     "userEmail",
   //     JSON.stringify(userData.userEmail)
   //   );
   // }, []);
 
   // React.useEffect(() => {
-  //   window.localStorage.setItem(
+  //   window.sessionStorage.setItem(
   //     "userEmail",
   //     JSON.stringify(userData.userEmail)
   //   );
@@ -36,13 +36,12 @@ const NavBar = () => {
             variant="h6"
             noWrap
             component="a"
-            href="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
               fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: ".3rem",
+              letterSpacing: ".1rem",
               color: "inherit",
               textDecoration: "none",
             }}
