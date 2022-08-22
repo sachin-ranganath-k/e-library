@@ -166,7 +166,7 @@ const UserRegister = () => {
                   </Button>
                 </Grid>
                 <Grid item xs={SPACING.s12}>
-                  <Link to="/UserLogin" className="loginLink">
+                  <Link to="/" className="loginLink">
                     {REGISTER.ALREADY_ACCOUNT}
                   </Link>
                 </Grid>
