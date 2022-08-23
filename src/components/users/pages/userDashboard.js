@@ -1,8 +1,9 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getBooks } from "../../../redux/admin/adminAction";
 import NavBar from "../navbar/NavBar";
+import Loader from "../../../Loader/Loader";
 
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -11,29 +12,34 @@ import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions, Grid } from "@mui/material";
 
 const UserDashboard = () => {
-   let userEmail=sessionStorage.getItem("userEmail")
+  let userEmail = sessionStorage.getItem("userEmail");
   useEffect(() => {
     fetchBooks();
-    console.log(userEmail)
+    console.log(userEmail);
   }, []);
+
+  const [loading, setLoading] = useState(false);
 
   const books = useSelector((state) => state.adminReducer.loadBooksData);
 
   // const location = useLocation();
   const dispatch = useDispatch();
   const fetchBooks = async () => {
+    setLoading(true);
     await axios
       .get("http://localhost:3002/books")
       .then((res) => {
         dispatch(getBooks(res.data));
+        setLoading(false);
         // console.log(res)
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false);
       });
   };
   return (
-    <div>
+    <>
       {/* Welcome {location.state.emails} */}
       <NavBar />
       <br />
@@ -73,7 +79,8 @@ const UserDashboard = () => {
           </Grid>
         ))}
       </Grid>
-    </div>
+      {loading ? <Loader /> : <></>}
+    </>
   );
 };
 
