@@ -41,3 +41,7 @@ export const UPLOAD_BOOKS={
   BOOK_LINK:"Paste Book URL Here",
   UPLOAD:"Upload"
 }
+
+export const MY_PROFILE={
+  USER_ID:"User ID"
+}

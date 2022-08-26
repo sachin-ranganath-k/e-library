@@ -11,6 +11,7 @@ import {
 import { SPACING } from "../../../constants/styleGuide";
 import NavBar from "../navbar/NavBar";
 import Logout from "./Logout";
+import { MY_PROFILE } from "../../../constants/constants";
 
 const UserProfile = () => {
   const allInfo = JSON.parse(sessionStorage.getItem("userInfo"));
@@ -28,11 +29,11 @@ const UserProfile = () => {
               <Grid item xs={SPACING.s12}>
                 <FormControl fullWidth sx={{ m: 1 }}>
                   <InputLabel htmlFor="outlined-adornment-amount">
-                    User ID
+                    {MY_PROFILE.USER_ID}
                   </InputLabel>
                   <OutlinedInput
                     id="outlined-adornment-amount"
-                    value={allInfo.id}
+                    value={"USER-"+allInfo.id}
                     // onChange={handleChange("amount")}
                     label="ID"
                     disabled
