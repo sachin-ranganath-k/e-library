@@ -24,6 +24,7 @@ const UserRegister = () => {
     email: "",
     setPassword: "",
     confirmPassword: "",
+    fav:[]
   });
   const [gender, setGender] = useState("");
   const [successMessage, setSuccessMessage] = useState("");

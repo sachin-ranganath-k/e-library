@@ -11,6 +11,7 @@ import AdminDashboard from "../components/admin/AdminDashboard";
 import UploadBooks from "../components/admin/UploadBooks";
 import UserProfile from "../components/users/pages/UserProfile";
 import Logout from "../components/users/pages/Logout";
+import Favorites from "../components/users/pages/Favorites";
 
 const RouteLinks = () => {
   return (
@@ -24,6 +25,7 @@ const RouteLinks = () => {
         <Route path="/AdminDashboard" element={<AdminDashboard />} />
         <Route path="/UploadBooks" element={<UploadBooks />} />
         <Route path="/MyProfile" element={<UserProfile />} />
+        <Route path="/MyFavorites" element={<Favorites />} />
         <Route path="/Logout" element={<Logout />} />
       </Routes>
       <Toaster position="bottom-right" />

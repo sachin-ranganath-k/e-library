@@ -48,7 +48,7 @@ const NavBar = () => {
           >
             {userEmail}
           </Typography>
-          <div style={{marginLeft:"65%"}}>
+          <div style={{marginLeft:"55%"}}>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {NavItems.map((page) => (
               <Button

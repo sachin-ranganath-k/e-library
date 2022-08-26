@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Grid,
@@ -62,7 +62,7 @@ const UserProfile = () => {
                   </InputLabel>
                   <OutlinedInput
                     id="outlined-adornment-amount"
-                    value="oo"
+                    value={allInfo.lastName}
                     // onChange={handleChange("amount")}
                     label="Last Name"
                   />
@@ -90,6 +90,7 @@ const UserProfile = () => {
                     id="outlined-adornment-amount"
                     value={allInfo.setPassword}
                     // onChange={handleChange("amount")}
+                    type="password"
                     label="Password"
                   />
                 </FormControl>

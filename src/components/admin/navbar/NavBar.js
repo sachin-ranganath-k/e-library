@@ -9,12 +9,11 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-
 const pages = ["Upload Books"];
 
 const NavBar = () => {
   const adminData = useSelector((state) => state.adminReducer.adminDetails);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     window.localStorage.getItem(
@@ -58,7 +57,7 @@ const NavBar = () => {
               <Button
                 key={page}
                 sx={{ my: 2, color: "white", display: "block" }}
-                onClick={()=>navigate("/UploadBooks")}
+                onClick={() => navigate("/UploadBooks")}
               >
                 {page}
               </Button>

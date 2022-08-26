@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "firstName": "Ranganath",
+      "lastName": "K",
+      "email": "sac@gmail.com",
+      "setPassword": "a",
+      "confirmPassword": "a",
+      "fav": [],
+      "id": 1
+    }
+  ],
+  "admin": [
+    {
+      "adminEmail": "admin",
+      "adminPassword": "admin"
+    }
+  ]
+}
