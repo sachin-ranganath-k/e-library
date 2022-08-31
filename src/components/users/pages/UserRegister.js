@@ -21,16 +21,17 @@ const UserRegister = () => {
   const [inputs, setInputs] = useState({
     firstName: "",
     lastName: "",
+    gender: "",
     email: "",
     setPassword: "",
     confirmPassword: "",
-    fav:[]
+    fav: [],
   });
-  const [gender, setGender] = useState("");
+
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const { firstName, lastName, email, setPassword, confirmPassword } = inputs;
+  const { firstName, lastName, gender, email, setPassword, confirmPassword } = inputs;
 
   const handleInputs = (e) => {
     const { name, value } = e.target;
@@ -38,10 +39,6 @@ const UserRegister = () => {
       ...inputs,
       [name]: value,
     });
-  };
-
-  const handleGender = (e) => {
-    setGender(e.target.value);
   };
 
   const apiCall = () => {
@@ -107,16 +104,22 @@ const UserRegister = () => {
                 <Grid item xs={SPACING.s6}>
                   <FormControl>
                     <FormLabel id="gender">Gender</FormLabel>
-                    <RadioGroup row value={gender} onChange={handleGender}>
+                    <RadioGroup row>
                       <FormControlLabel
                         control={<Radio />}
                         label="Male"
-                        value="male"
+                        name="gender"
+                        value="Male"
+                        onChange={handleInputs}
+                        checked={gender == "Male"}
                       />
                       <FormControlLabel
                         control={<Radio />}
                         label="Female"
-                        value="female"
+                        name="gender"
+                        value="Female"
+                        onChange={handleInputs}
+                        checked={gender == "Female"}
                       />
                     </RadioGroup>
                   </FormControl>
