@@ -30,8 +30,14 @@ const UserRegister = () => {
 
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [firstNameError, setFirstNameError] = useState(false);
+  const [lastNameError, setlastNameError] = useState(false);
+  const [genderError, setGenderError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
 
-  const { firstName, lastName, gender, email, setPassword, confirmPassword } = inputs;
+  const { firstName, lastName, gender, email, setPassword, confirmPassword } =
+    inputs;
 
   const handleInputs = (e) => {
     const { name, value } = e.target;
@@ -58,7 +64,19 @@ const UserRegister = () => {
   };
 
   const formSubmit = () => {
-    if (setPassword !== confirmPassword) {
+    if (firstName === "") {
+      setFirstNameError(true);
+    } else if (lastName === "") {
+      setlastNameError(true);
+    } else if (gender === "") {
+      setGenderError(true);
+    } else if (email === "") {
+      setEmailError(true);
+    }
+    else if(setPassword===""){
+      setPasswordError(true);
+    }
+     else if (setPassword !== confirmPassword) {
       alert("error", TOASTER.INVALID_PASSWORD);
     } else {
       apiCall();
@@ -89,6 +107,11 @@ const UserRegister = () => {
                     value={firstName}
                     onChange={handleInputs}
                   />
+                  {firstNameError && firstName.length <= 0 ? (
+                    <p id="errorMsg">*First name is required</p>
+                  ) : (
+                    ""
+                  )}
                 </Grid>
                 <Grid item xs={SPACING.s6}>
                   <TextField
@@ -100,6 +123,11 @@ const UserRegister = () => {
                     value={lastName}
                     onChange={handleInputs}
                   />
+                   {lastNameError && lastName.length <= 0 ? (
+                    <p id="errorMsg">*Last name is required</p>
+                  ) : (
+                    ""
+                  )}
                 </Grid>
                 <Grid item xs={SPACING.s6}>
                   <FormControl>
@@ -111,7 +139,7 @@ const UserRegister = () => {
                         name="gender"
                         value="Male"
                         onChange={handleInputs}
-                        checked={gender == "Male"}
+                        checked={gender === "Male"}
                       />
                       <FormControlLabel
                         control={<Radio />}
@@ -119,9 +147,14 @@ const UserRegister = () => {
                         name="gender"
                         value="Female"
                         onChange={handleInputs}
-                        checked={gender == "Female"}
+                        checked={gender === "Female"}
                       />
                     </RadioGroup>
+                    {genderError && gender.length <= 0 ? (
+                    <p id="errorMsg">*Select Gender</p>
+                  ) : (
+                    ""
+                  )}
                   </FormControl>
                 </Grid>
                 <Grid item xs={SPACING.s6}>
@@ -134,7 +167,13 @@ const UserRegister = () => {
                     value={email}
                     onChange={handleInputs}
                   />
+                   {emailError && email.length <= 0 ? (
+                    <p id="errorMsg">*Email is required</p>
+                  ) : (
+                    ""
+                  )}
                 </Grid>
+
                 <Grid item xs={SPACING.s6}>
                   <TextField
                     type="password"
@@ -146,6 +185,11 @@ const UserRegister = () => {
                     value={setPassword}
                     onChange={handleInputs}
                   />
+                   {passwordError && setPassword.length <= 0 ? (
+                    <p id="errorMsg">*Password is required</p>
+                  ) : (
+                    ""
+                  )}
                 </Grid>
                 <Grid item xs={SPACING.s6}>
                   <TextField
